@@ -11,7 +11,15 @@ describe('check default', () => {
         expect(unlocked);
         expect(open);
     });
+});
 
-    
+describe('buttons functionality',  () => {
+    it('displays closed when close gate is clicked', () => {
+        const { getByText } = rt.render(<Dashboard />);
+        const closeButton = getByText(/close gate/i);
+        rt.fireEvent.click(closeButton, (i) => console.log(i));
+        const closed = getByText('Closed');
+        expect(closed)
+    });
 });
 
