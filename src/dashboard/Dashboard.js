@@ -1,37 +1,31 @@
-import React from 'react';
+import React, { useState } from "react";
 
-import Display from '../display/Display';
-import Controls from '../controls/Controls';
+import Display from "../display/Display";
+import Controls from "../controls/Controls";
 
-class Dashboard extends React.Component {
-  state = {
-    locked: false,
-    closed: false,
+const Dashboard = () => {
+  const [locked, setLocked] = useState(false);
+  const [closed, setClosed] = useState(false);
+
+  const toggleLocked = () => {
+    setLocked(prev => !prev );
   };
 
-  render() {
-    const { closed, locked } = this.state;
-
-    return (
-      <>
-        <Display locked={locked} closed={closed} />
-        <Controls
-          locked={locked}
-          closed={closed}
-          toggleLocked={this.toggleLocked}
-          toggleClosed={this.toggleClosed}
-        />
-      </>
-    );
-  }
-
-  toggleLocked = () => {
-    this.setState(prev => ({ locked: !prev.locked }));
+  const toggleClosed = () => {
+    setClosed(prev => !prev);
   };
 
-  toggleClosed = () => {
-    this.setState(prev => ({ closed: !prev.closed }));
-  };
-}
+  return (
+    <>
+      <Display locked={locked} closed={closed} />
+      <Controls
+        locked={locked}
+        closed={closed}
+        toggleLocked={toggleLocked}
+        toggleClosed={toggleClosed}
+      />
+    </>
+  );
+};
 
 export default Dashboard;
