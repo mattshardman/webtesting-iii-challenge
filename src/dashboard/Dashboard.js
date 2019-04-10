@@ -6,7 +6,6 @@ import Controls from "../controls/Controls";
 const Dashboard = () => {
   const [locked, setLocked] = useState(false);
   const [closed, setClosed] = useState(false);
-  //
 
   const toggleLocked = () => {
     setLocked(prev => !prev );
